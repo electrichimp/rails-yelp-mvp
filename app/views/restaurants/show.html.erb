@@ -15,6 +15,7 @@
           <% end %>
         </ul>
       <% end %>
+    <%= link_to "Nuevo review?", new_restaurant_review_path(@restaurant) %>
     <div class="card p-3 mb-3 mt-4">
       <h2>Escribe tu review de <%= @restaurant.name %></h2>
       <%= simple_form_for [@restaurant, @review] do |f| %>
