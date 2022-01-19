@@ -1,0 +1,26 @@
+<div class="mt-5">
+  <div class="card p-3 mb-3 mt-4">
+    <h2><%= @restaurant.name %></h2>
+    <div>Address: <%= @restaurant.address%></div>
+    <div>Phone: <%= @restaurant.phone_number%></div>
+    <div>Category: <%= @restaurant.category%></div>
+  </div>
+    <h4>Reviews</h4>
+      <% if @restaurant.reviews.empty? %>
+        <div>No reviews yet</div>
+      <% else %>
+        <ul>
+          <% @restaurant.reviews.each do |review| %>
+            <li><%= '★' * review.rating  %><%= '✩' * (5 - review.rating)  %> <%= review.content %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    <div class="card p-3 mb-3 mt-4">
+      <h2>Escribe tu review de <%= @restaurant.name %></h2>
+      <%= simple_form_for [@restaurant, @review] do |f| %>
+        <%= f.input :rating %>
+        <%= f.input :content %>
+        <%= f.submit "Mandar review", class: "btn btn-primary" %>
+      <% end %>
+  </div>
+</div>
